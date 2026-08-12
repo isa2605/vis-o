@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vision-test / snellen-simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="repo-title">
+        <svg class="octicon" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fill="currentColor" d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-1 1v.69dM2.5 7.5A1.5 1.5 0 0 1 4 6h9.25a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-.75.75H4a1.5 1.5 0 0 1-1.5-1.5v-2z"></path>
+        </svg>
+        <h1>vision-test / snellen-simulator</h1>
+        <span class="badge">Public</span>
+      </div>
+      <p class="repo-desc">Simulador interativo de níveis de acuidade visual com Tabela de Snellen.</p>
+    </header>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="file-icon">⚙️</span> vision_settings.json
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="visionLevel">Selecione o Nível de Visão:</label>
+          <select id="visionLevel">
+            <option value="normal">Normal (Visão 100% / 20/20)</option>
+            <option value="miopia">Embaçado (Miopia)</option>
+            <option value="astigmatismo">Borrado (Astigmatismo)</option>
+            <option value="cegueira">Tudo Preto (Cegueira Total)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="file-icon">👁️</span> snellen_chart_view.output
+      </div>
+      <div class="card-body snellen-container">
+        
+        <div id="snellenBoard" class="snellen-board mode-normal">
+          <div class="snellen-line line-1">E</div>
+          <div class="snellen-line line-2">F P</div>
+          <div class="snellen-line line-3">T O Z</div>
+          <div class="snellen-line line-4">L P E D</div>
+          <div class="snellen-line line-5">P E C F D</div>
+          <div class="snellen-line line-6">E D F C Z P</div>
+          <div class="snellen-line line-7">F E L O P Z D</div>
+          <div class="snellen-line line-8">D E F P O T E C</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="file-icon">📖</span> README.md
+      </div>
+      <div class="card-body console-log">
+        <h3 id="infoTitle">Visão Normal (100%)</h3>
+        <p id="infoDesc">
+          Foco perfeito na retina. Todas as linhas da Tabela de Snellen são nítidas e legíveis a distâncias padrão.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
