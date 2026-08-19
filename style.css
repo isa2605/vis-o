@@ -1,316 +1,141 @@
 :root {
-  --bg-dark: #0d1117;
-  --bg-card: #161b22;
+  --bg-color: #0d1117;
+  --card-bg: #161b22;
   --border-color: #30363d;
   --text-main: #c9d1d9;
-  --text-muted: #8b949e;
-  --accent-blue: #58a6ff;
-  --accent-green: #238636;
-  --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  --text-white: #ffffff;
+  --btn-bg: #21262d;
+  --btn-hover: #30363d;
+  --accent-color: #238636;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 body {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.gh-header {
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 32px;
+}
+
+.gh-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text-white);
 }
 
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-/* Header Estilo GitHub */
-header {
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.5rem;
-  margin-bottom: 2rem;
+.repo-meta h2 {
+  color: var(--text-white);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
 }
 
-.repo-title {
+.repo-meta p {
+  margin-bottom: 20px;
+}
+
+.controls {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
-.octicon {
-  fill: var(--text-muted);
-}
-
-header h1 {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--accent-blue);
-  font-family: var(--font-mono);
-}
-
-header span.badge {
-  background-color: var(--border-color);
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  padding: 0.1rem 0.5rem;
-  border-radius: 2em;
-  border: 1px solid #444c56;
-}
-
-.repo-desc {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-/* GitHub Card Style */
-.card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-}
-
-.card-header {
-  background-color: #21262d;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-color);
-  font-size: 0.875rem;
-  font-weight: 600;
+.btn {
+  background-color: var(--btn-bg);
   color: var(--text-main);
-  font-family: var(--font-mono);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.card-body {
-  padding: 1.25rem;
-}
-
-/* Formulário e Controles */
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-}
-
-select {
-  width: 100%;
-  background-color: var(--bg-dark);
   border: 1px solid var(--border-color);
+  padding: 8px 16px;
   border-radius: 6px;
-  padding: 0.6rem 0.75rem;
-  color: var(--text-main);
-  font-size: 0.9rem;
-  font-family: var(--font-mono);
-  outline: none;
   cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-select:focus {
-  border-color: var(--accent-blue);
+.btn:hover {
+  background-color: var(--btn-hover);
 }
 
-/* Área da Tabela de Snellen */
-.snellen-container {
+.btn.active {
+  background-color: var(--accent-color);
+  color: var(--text-white);
+  border-color: rgba(240, 246, 252, 0.1);
+}
+
+.chart-wrapper {
+  position: relative;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 40px;
+  min-height: 520px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
-  padding: 2rem;
-  border-radius: 6px;
-  min-height: 400px;
+  overflow: hidden;
 }
 
-.snellen-board {
-  background-color: #ffffff;
+.snellen-chart {
   color: #000000;
-  padding: 2rem 3rem;
-  border-radius: 4px;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.25em;
+  font-family: "Courier New", Courier, monospace;
   font-weight: bold;
-  letter-spacing: 0.35em;
   user-select: none;
-  width: 100%;
-  max-width: 350px;
-  transition: filter 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-/* Tamanhos da Tabela de Snellen */
-.line-1 { font-size: 3.5rem; }
-.line-2 { font-size: 2.5rem; }
-.line-3 { font-size: 1.8rem; }
-.line-4 { font-size: 1.4rem; }
-.line-5 { font-size: 1.1rem; }
-.line-6 { font-size: 0.9rem; }
-.line-7 { font-size: 0.75rem; }
-.line-8 { font-size: 0.6rem; }
+.line-1 { font-size: 80px; }
+.line-2 { font-size: 60px; }
+.line-3 { font-size: 45px; }
+.line-4 { font-size: 32px; }
+.line-5 { font-size: 24px; }
+.line-6 { font-size: 18px; }
+.line-7 { font-size: 14px; }
+.line-8 { font-size: 10px; }
 
-/* Efeitos Visuais das Condições Oculares */
-.mode-normal {
+/* Efeitos Visuais */
+.vision-normal {
   filter: none;
 }
 
-.mode-miopia {
-  /* Embaçado devido à refração para objetos distantes */
-  filter: blur(4px);
+.vision-miopia {
+  filter: blur(6px);
 }
 
-.mode-astigmatismo {
-  /* Borrado com distorção direcional de eixos */
-  filter: blur(2px) drop-shadow(5px 1px 1px rgba(0,0,0,0.7));
+.vision-astigmatismo {
+  filter: blur(1.5px);
+  text-shadow: 7px 0px 3px rgba(0, 0, 0, 0.6), -5px 0px 2px rgba(0, 0, 0, 0.4);
 }
 
-.mode-cegueira {
-  /* Simulação de ausência de visão / escuridão total */
+.blindness-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: #000000;
-  color: #000000;
-  filter: blur(20px);
-  opacity: 0;
+  z-index: 10;
 }
 
-/* README */
-.console-log {
-  font-family: var(--font-mono);
-}
-
-.console-log h3 {
-  color: var(--accent-blue);
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.console-log p {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-}
-/* Estilo escuro padrão do GitHub */
-.github-footer {
-  border-top: 1px solid #30363d;
-  padding: 32px 16px;
-  background-color: #0d1117;
-  color: #8b949e;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.github-footer-icon {
-  margin-bottom: 12px;
-  color: #8b949e;
-}
-
-.github-footer-text {
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.github-footer-text p {
-  margin: 4px 0;
-}
-
-.github-footer-text strong {
-  color: #58a6ff;
-  font-weight: 600;
-}
-
-.github-footer-meta {
-  margin-top: 14px;
-  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 11px;
-  color: #484f58;
-}
-
-
-
-
-
-
-
-
-
-hr {
-    margin: 0;
-}
-
-.rodapé {
-   background-color: white;
-    padding: 1em;
-}
-
-.lista-rodapé {
-    display: none;
-}
-
-
-@media screen and (min-width: 1024px) {
-    .rodapé {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    .lista-rodapé {
-        display: block;
-    }
-
-    .lista-rodapé__item {
-        display: flex;
-        align-items: center;
-        margin: 0.6em 0;
-    }
-
-    .lista-rodapé__link {
-        color: var(--cinza);
-        text-decoration: none;
-        margin-left: 0.6em;
-    }
-
-    .lista-rodapé__titulo {
-        font-size: 14px;
-        color: var(--cinza-claro);
-    }
-
-    .rodapé__titulo {
-        font-size: 24px;
-    }
-}
-
-@media screen and (min-width: 1728px) {
-    .lista-rodapé {
-        border-left: 1px solid var(--cinza-claro);
-        padding-left: 1em;
-    }
-
-    .rodapé {
-        padding: 3em 0;
-    }
-}
-.rodapepadrao {
-  text-align: justify;
-  font-size:12px;
-  padding: 5px 5px;
- background-color: white;
-  margin-top:15px;
-  color: rgb(15, 53, 12);
-  vertical-align: displayHeight;
-  height: height;
-  width: displayWidth;
-}
-
-
-.copyright {
-    text-align:center;
-	color:rgb(2, 26, 2);
-	font-size: 10px;
-	margin: 0px 0px;
+.blindness-overlay.active {
+  display: block;
 }
